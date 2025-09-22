@@ -1,0 +1,32 @@
+@use './root.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    color: inherit;
+}
+
+html {
+    font-family: 'Inter', 'sans-serif';
+    color: root.$typeography-black;
+    font-size: 1rem;
+    font-weight: 350;
+}
+
+img {
+    display: block;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    padding: 4rem 10rem;
+}
