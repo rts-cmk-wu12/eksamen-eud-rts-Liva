@@ -1,0 +1,80 @@
+@use '../root.scss';
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 1rem 3rem;
+
+    &-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        background-color: root.$primary-white;
+        border: 1px solid root.$border-primary;
+        border-radius: 5rem;
+        padding: .5rem 1rem;
+        max-width: 20rem;
+        width: 100%;
+
+        label {
+            width: 100%;
+        }
+
+        &__input {
+            background: none;
+            border: none;
+            border-radius: 0;
+            height: 1.5rem;
+            width: 100%;
+            padding-left: .2rem;
+            font-size: 1rem;
+
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+
+            &::placeholder {
+                font-size: 1rem;
+                color: root.$typeography-input;
+            }
+        }
+
+        &__icon {
+            background: none;
+            border: none;
+            height: 1rem;
+            font-size: 1rem;
+            color: root.$primary-black;
+        }
+    }
+
+    &-filter {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        &__checkbox {
+            display: none;
+
+            &:checked~span {
+                color: root.$typeography-white;
+                background-color: root.$primary-black;
+
+                &::before {
+                    content: '⎷ ';
+                }
+            }
+        }
+
+        span {
+            padding: .3rem .5rem;
+            border-radius: .3rem;
+            background-color: root.$primary-grey;
+            color: root.$typeography-grey;
+            cursor: pointer;
+            transition: 300ms;
+        }
+    }
+}
