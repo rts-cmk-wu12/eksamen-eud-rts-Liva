@@ -1,0 +1,40 @@
+@use '../root.scss';
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+    margin-top: 6rem;
+
+    &__link {
+        &.active {
+            background-color: root.$primary-black;
+            color: root.$typeography-white;
+            padding: .3rem .73rem;
+            border-radius: .4rem;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        background: none;
+        border: none;
+        text-transform: capitalize;
+        font-size: 1rem;
+
+        svg {
+            color: root.$primary-black;
+        }
+
+        &:disabled {
+            color: root.$typeography-input;
+
+            svg {
+                color: root.$typeography-grey;
+            }
+        }
+    }
+}

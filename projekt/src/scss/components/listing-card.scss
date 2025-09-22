@@ -1,0 +1,26 @@
+@use '../root.scss';
+
+.listing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    &-card {
+        padding: 1rem;
+        border-radius: .5rem;
+        border: 1px solid root.$border-primary;
+
+        &__cover {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 229/247;
+            object-fit: cover;
+        }
+
+        &__heading {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 350;
+        }
+    }
+}

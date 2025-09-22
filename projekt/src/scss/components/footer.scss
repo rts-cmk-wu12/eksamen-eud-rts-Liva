@@ -1,0 +1,33 @@
+@use '../root.scss';
+
+.footer {
+    padding-block: 1.8rem 3rem;
+    padding-inline: 2rem;
+    margin-inline: 8rem;
+    border-top: 1px solid root.$border-primary;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    &-column {
+        line-height: 1.5lh;
+
+        &__media {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+
+            &-icon {
+                font-size: 1.8rem;
+                color: root.$primary-black;
+            }
+        }
+
+        &__heading {
+            text-transform: capitalize;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+    }
+}

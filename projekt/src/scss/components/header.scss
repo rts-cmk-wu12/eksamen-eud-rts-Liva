@@ -1,0 +1,47 @@
+@use '../root.scss';
+
+.header {
+    padding: 1.8rem 2rem;
+    margin-inline: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid root.$border-primary;
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1.12rem;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &-item {
+            text-transform: capitalize;
+            padding: .3rem .5rem;
+            border-radius: .5rem;
+
+            &.active {
+                background-color: root.$primary-grey;
+            }
+        }
+
+        &-btn {
+            text-transform: capitalize;
+            padding: .3rem .8rem;
+            border-radius: .5rem;
+            background-color: root.$accent-grey;
+            border: 1px solid root.$border-secondary;
+
+            &--dark {
+                background-color: root.$primary-black;
+                border-color: root.$primary-black;
+                color: root.$typeography-white;
+            }
+        }
+    }
+}
