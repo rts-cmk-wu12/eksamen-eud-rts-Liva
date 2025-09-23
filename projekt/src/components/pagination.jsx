@@ -10,21 +10,23 @@ import '@/scss/components/pagination.scss';
 function Pagination({ listings }) {
     if (listings.length <= 6) return;
 
-    const { setResults } = useContext(listingsContext);
+    const { setResults, allResults } = useContext(listingsContext);
     const searchParams = useSearchParams();
     const router = useRouter();
     const activePage = searchParams.get('page') ? Number(searchParams.get('page')) : 1;
 
-    const amountOfPages = Math.ceil(listings.length / 6);
+    const amountOfPages = Math.ceil(allResults.length / 6);
 
     useEffect(() => {
+        if (allResults.length <= 6) return;
+
         const firstSlice = 6 * activePage - 6;
         const secondSlice = 6 * activePage;
 
-        setResults(listings.slice(firstSlice, secondSlice));
-    }, [activePage]);
+        setResults(allResults.slice(firstSlice, secondSlice));
+    }, [activePage, allResults]);
 
-    return (
+    if (allResults?.length) return (
         <nav className="pagination">
             <button
                 type="button"
