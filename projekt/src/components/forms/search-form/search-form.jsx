@@ -2,10 +2,10 @@
 
 import { useActionState, useContext, useEffect } from "react";
 import { listingsContext } from "../../providers/listings-provider";
+import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 import searchAction from "./search-action";
 import '@/scss/components/search.scss';
-import { useRouter } from "next/navigation";
 
 function SearchForm({ listings }) {
     const { setResults, setAllResults } = useContext(listingsContext);
@@ -41,9 +41,7 @@ function SearchForm({ listings }) {
 
         setResults(formState.results.slice(0, 6));
         setAllResults(formState.results);
-
     }, [formState]);
-
 
     return (
         <form action={formAction} className="search">
