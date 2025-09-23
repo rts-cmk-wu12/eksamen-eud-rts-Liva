@@ -1,18 +1,46 @@
 'use client'
 
 import { useActionState, useContext, useEffect } from "react";
-import { listingsContext } from "../providers/listings-provider";
+import { listingsContext } from "../../providers/listings-provider";
 import { FiSearch } from "react-icons/fi";
 import searchAction from "./search-action";
 import '@/scss/components/search.scss';
+import { useRouter } from "next/navigation";
 
-function SearchForm() {
-    const { setResults } = useContext(listingsContext);
+function SearchForm({ listings }) {
+    const { setResults, setAllResults } = useContext(listingsContext);
     const [formState, formAction, isPending] = useActionState(searchAction);
+    const router = useRouter();
 
     useEffect(() => {
-        if (!formState || !formState.success) return;
-        console.log(formState);
+        setAllResults(listings);
+    }, []);
+
+    useEffect(() => {
+        if (isPending) {
+            setResults([]);
+            setAllResults([]);
+        };
+    }, [isPending]);
+
+    useEffect(() => {
+        if (!formState) return;
+        if (!formState.success && formState.properties.query.errors) {
+            router.push('?page=1');
+            setResults(listings);
+            setAllResults(listings);
+            return;
+        };
+
+        router.push('?page=1');
+        if (typeof (formState.results) === 'string') {
+            setResults(formState.results);
+            setAllResults([]);
+            return;
+        };
+
+        setResults(formState.results.slice(0, 6));
+        setAllResults(formState.results);
 
     }, [formState]);
 
@@ -32,7 +60,6 @@ function SearchForm() {
                     </label>
                     <button type="submit" className="search-field__icon"><FiSearch /></button>
                 </div>
-                <span className="search__error">{formState?.properties?.query?.errors}</span>
             </div>
             <div className="search-filter">
                 <label>

@@ -7,7 +7,7 @@ export default async function searchAction(prevState, formData) {
     const { query } = Object.fromEntries(formData);
 
     const schema = z.object({
-        query: z.string().min(1, { message: 'Searchfield may not be empty' }),
+        query: z.string().min(1, { message: 'Searchfield is empty' }),
     });
 
     const validated = schema.safeParse({
@@ -27,7 +27,9 @@ export default async function searchAction(prevState, formData) {
     ));
 
     if (!filteredListings.length) return {
-        success: false
+        success: true,
+        results: 'No results found...',
+        query
     };
 
     return {
