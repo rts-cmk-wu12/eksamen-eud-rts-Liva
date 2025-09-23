@@ -10,8 +10,7 @@ function Footer() {
                 <Link href='/' className="header__brand">
                     <Image
                         src='/logo.svg' alt="logo"
-                        width={40} height={40}
-                        priority />
+                        width={40} height={40} />
                     SwapHub
                 </Link>
                 <div className="footer-column__media">
