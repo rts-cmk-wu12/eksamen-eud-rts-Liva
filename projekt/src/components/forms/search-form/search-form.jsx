@@ -26,13 +26,13 @@ function SearchForm({ listings }) {
     useEffect(() => {
         if (!formState) return;
         if (!formState.success && formState.properties.query.errors) {
-            router.push('?page=1', {scroll: false});
+            router.replace('?page=1', { scroll: false });
             setResults(listings);
             setAllResults(listings);
             return;
         };
 
-        router.push('?page=1');
+        router.replace('?page=1', { scroll: false });
         if (typeof (formState.results) === 'string') {
             setResults(formState.results);
             setAllResults([]);
