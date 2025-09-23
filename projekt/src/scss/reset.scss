@@ -27,12 +27,22 @@ a {
     text-decoration: none;
 }
 
+body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
 main {
     padding: 4rem 10rem;
     padding-bottom: 2rem;
 }
 
 .heading {
-    font-size: 1.25rem;
+    font-size: 1.62rem;
     font-weight: 600;
+}
+
+footer {
+    margin-top: auto;
 }

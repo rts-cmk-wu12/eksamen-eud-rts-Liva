@@ -6,10 +6,10 @@ export const listingsContext = createContext(null);
 
 function ListingsProvider({ children }) {
     const [results, setResults] = useState([]);
-    const [error, setError] = useState('');
+    const [allResults, setAllResults] = useState([]);
 
     return (
-        <listingsContext.Provider value={{ results, setResults, error, setError }}>
+        <listingsContext.Provider value={{ results, setResults, allResults, setAllResults }}>
             {children}
         </listingsContext.Provider>
     );

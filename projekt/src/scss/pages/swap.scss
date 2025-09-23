@@ -1,0 +1,53 @@
+@use '../root.scss';
+@use '../mixins.scss';
+
+.swap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    margin-top: 2rem;
+
+    &-card {
+        max-width: 23rem;
+
+        &__cover {
+            width: 100%;
+            max-width: 23rem;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: .5rem;
+            box-shadow: 0 0 10px 2px root.$accent-grey;
+        }
+
+        &__title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-block: .5rem;
+        }
+    }
+
+    &__icon {
+        align-self: center;
+        font-size: 2rem;
+        color: root.$primary-black;
+    }
+
+    &-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 4rem;
+
+        &__label {
+            display: block;
+            font-weight: 450;
+            margin-bottom: .3rem;
+        }
+
+        &__btn {
+            font-size: .9rem;
+            @include mixins.btnDefault();
+        }
+    }
+}

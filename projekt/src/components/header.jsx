@@ -1,9 +1,13 @@
+import { cookies } from "next/headers";
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
 import '@/scss/components/header.scss';
 
-function Header() {
+async function Header() {
+    const cookieStore = await cookies();
+    const userId = cookieStore.get('sh_user_id')?.value;
+
     return (
         <header className="header">
             <Link href='/' className="header__brand">
@@ -18,8 +22,17 @@ function Header() {
                     <li><NavLink defaultClass='header__list-item' path='/'>listings</NavLink></li>
                     <li><NavLink defaultClass='header__list-item' path='/community'>community</NavLink></li>
                     <li><NavLink defaultClass='header__list-item' path='/contact'>contact</NavLink></li>
-                    <li><NavLink defaultClass='header__list-btn' path='/login'>login</NavLink></li>
-                    <li><NavLink defaultClass='header__list-btn header__list-btn--dark' path='/register'>register</NavLink></li>
+                    {userId ? (
+                        <>
+                            <li><NavLink defaultClass='header__list-item' path='/profile'>profile</NavLink></li>
+                            <li><NavLink defaultClass='header__list-btn' path='/logout'>logout</NavLink></li>
+                        </>
+                    ) : (
+                        <>
+                            <li><NavLink defaultClass='header__list-btn' path='/login'>login</NavLink></li>
+                            <li><NavLink defaultClass='header__list-btn header__list-btn--dark' path='/register'>register</NavLink></li>
+                        </>
+                    )}
                 </ul>
             </nav>
         </header>

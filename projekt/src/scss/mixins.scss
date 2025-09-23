@@ -1,0 +1,15 @@
+@use './root.scss';
+
+@mixin btnDefault() {
+    padding: .3rem .8rem;
+    border-radius: .5rem;
+    background-color: root.$accent-grey;
+    border: 1px solid root.$border-secondary;
+}
+
+@mixin btnDark() {
+    @include btnDefault();
+    background-color: root.$primary-black;
+    border-color: root.$primary-black;
+    color: root.$typeography-white;
+}
