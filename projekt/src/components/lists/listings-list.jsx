@@ -1,8 +1,8 @@
 'use client';
 
 import { useContext } from "react";
-import { listingsContext } from "./providers/listings-provider";
-import ListingsCard from "./cards/listings-card";
+import { listingsContext } from "../providers/listings-provider";
+import ListingsCard from "../cards/listings-card";
 
 function ListingsList() {
     const { results } = useContext(listingsContext);

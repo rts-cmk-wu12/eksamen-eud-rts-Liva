@@ -1,7 +1,7 @@
 import myFetch from "@/utils/fetch";
 import ListingsProvider from "@/components/providers/listings-provider";
 import SearchForm from "@/components/forms/search-form/search-form";
-import ListingsList from "@/components/listings-list";
+import ListingsList from "@/components/lists/listings-list";
 import Pagination from "@/components/pagination";
 
 export const metadata = {
