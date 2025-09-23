@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import myFetch from "@/utils/fetch";
 import Image from "next/image";
+import ProposeBtn from "@/components/propose-btn";
 import ListingOther from "@/components/listing-other";
 import '@/scss/pages/details.scss';
 
@@ -18,7 +19,7 @@ async function ListingDetails({ params }) {
     const listing = await myFetch(`api/v1/listings/${id}`);
 
     const cookieStore = await cookies();
-    const userId = cookieStore.get('sh_user_id')?.value;
+    const userId = Number(cookieStore.get('sh_user_id')?.value);
 
     const createdAt = new Date(listing.createdAt);
     const publishedDate = `${createdAt.getFullYear()}-${createdAt.getMonth() + 1}-${createdAt.getDate()}`;
@@ -39,16 +40,7 @@ async function ListingDetails({ params }) {
                     <h1 className="heading">{listing.title}</h1>
                     <p className="listing-details__text">{listing.description}</p>
                     <span>On SwapHub since: {publishedDate}</span>
-                    {userId && (
-                        <button
-                            type="button"
-                            disabled={listing.userId === userId}
-                            title={listing.userId === userId
-                                ? 'Cannot trade with yourself'
-                                : 'Ask owner to trade with you'}
-                            className="listing-details__btn"
-                        >Propose a swap</button>
-                    )}
+                    {userId && <ProposeBtn listing={listing} userId={userId} />}
                 </section>
             </div>
             <ListingOther ownerId={listing.userId} listingId={listing.id} />
