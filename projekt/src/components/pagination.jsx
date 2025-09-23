@@ -26,7 +26,7 @@ function Pagination({ listings }) {
         setResults(allResults.slice(firstSlice, secondSlice));
     }, [activePage, allResults]);
 
-    if (allResults?.length) return (
+    if (allResults?.length > 6) return (
         <nav className="pagination">
             <button
                 type="button"
