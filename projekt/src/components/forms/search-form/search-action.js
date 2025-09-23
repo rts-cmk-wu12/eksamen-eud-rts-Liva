@@ -3,7 +3,7 @@
 import z from "zod";
 import myFetch from "@/utils/fetch";
 
-export default async function searchAction(prevState, formData) {
+export default async function searchAction(_, formData) {
     const { query } = Object.fromEntries(formData);
 
     const schema = z.object({
