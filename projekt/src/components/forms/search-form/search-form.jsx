@@ -26,7 +26,7 @@ function SearchForm({ listings }) {
     useEffect(() => {
         if (!formState) return;
         if (!formState.success && formState.properties.query.errors) {
-            router.push('?page=1');
+            router.push('?page=1', {scroll: false});
             setResults(listings);
             setAllResults(listings);
             return;

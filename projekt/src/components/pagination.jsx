@@ -32,7 +32,7 @@ function Pagination({ listings }) {
                 type="button"
                 className="pagination__btn"
                 disabled={activePage <= 1}
-                onClick={() => router.push(`?page=${activePage - 1}`)}
+                onClick={() => router.push(`?page=${activePage - 1}`, {scroll: false})}
             ><FaArrowLeft />previous</button>
 
             {[...Array(amountOfPages)].map((_, index) => (
@@ -49,7 +49,7 @@ function Pagination({ listings }) {
                 type="button"
                 className="pagination__btn"
                 disabled={activePage >= amountOfPages}
-                onClick={() => router.push(`?page=${activePage + 1}`)}
+                onClick={() => router.push(`?page=${activePage + 1}`, {scroll: false})}
             >next<FaArrowRight /></button>
         </nav>
     )
