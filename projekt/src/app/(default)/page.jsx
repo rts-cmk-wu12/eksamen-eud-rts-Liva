@@ -1,7 +1,7 @@
 import myFetch from "@/utils/fetch";
 import ListingsProvider from "@/components/providers/listings-provider";
 import SearchForm from "@/components/forms/search-form/search-form";
-import ListingsCard from "@/components/cards/listings-card";
+import ListingsList from "@/components/listings-list";
 import Pagination from "@/components/pagination";
 
 export const metadata = {
@@ -16,7 +16,7 @@ async function HomePage() {
       <h1 className="heading">Home</h1>
       <ListingsProvider>
         <SearchForm listings={listings} />
-        <ListingsCard />
+        <ListingsList />
         <Pagination listings={listings} />
       </ListingsProvider>
     </>
