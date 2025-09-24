@@ -1,7 +1,7 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 import z from "zod";
 
 async function profileAction(_, formData) {
@@ -58,7 +58,7 @@ async function profileAction(_, formData) {
         errors: ['Could not update profile. Try again later']
     };
 
-    revalidatePath('/profile');
+    revalidatePath('http://localhost:3000/profile');
 
     return {
         success: true,
