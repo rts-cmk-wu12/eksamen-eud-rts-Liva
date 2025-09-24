@@ -1,28 +1,40 @@
 'use client';
 
-import useFetch from "@/hooks/use-fetch";
+import { useEffect, useState } from "react";
+import myFetch from "@/utils/fetch";
 import Link from "next/link";
 import Image from "next/image";
 
 function SwapCard({ id }) {
-    const { data, error, isLoading } = useFetch(`api/v1/listings/${id}`);
+    const [listing, setListing] = useState(null);
 
-    if (data) return (
+    useEffect(() => {
+        async function fetchListing() {
+            const data = await myFetch(`api/v1/listings/${id}`);
+            setListing(data);
+        }
+
+        fetchListing();
+    }, [id]);
+
+    if (listing) return (
         <section className="swap-card">
-            <Link href={`/listings/${data.id}`}>
+            <Link href={`/listings/${listing.id}`}>
                 <Image
-                    src={data.asset.url}
-                    alt={`${data.title} cover`}
+                    src={listing.asset.url}
+                    alt={`${listing.title} cover`}
                     width={1024} height={1536}
                     quality={30}
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEW2tLLDbwZkAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC"
                     className="swap-card__cover" />
             </Link>
-            <h2 className="swap-card__title">{data.title}</h2>
-            <p>Owner: {`${data.user.firstname} ${data.user.lastname}`}</p>
+            <h2 className="swap-card__title">{listing.title}</h2>
+            <p>Owner: {`${listing.user.firstname} ${listing.user.lastname}`}</p>
         </section>
     );
+
+    if (!listing) return <p>Loading...</p>
 }
 
 export default SwapCard;
