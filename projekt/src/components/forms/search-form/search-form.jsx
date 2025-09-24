@@ -66,11 +66,15 @@ function SearchForm({ listings }) {
                 </label>
                 <label>
                     <input type="radio" name="filter" className="search-filter__checkbox" />
-                    <span>Price ascending</span>
+                    <span>Old</span>
                 </label>
                 <label>
                     <input type="radio" name="filter" className="search-filter__checkbox" />
-                    <span>Price descending</span>
+                    <span>A-Z</span>
+                </label>
+                <label>
+                    <input type="radio" name="filter" className="search-filter__checkbox" />
+                    <span>Z-A</span>
                 </label>
             </div>
         </form>
