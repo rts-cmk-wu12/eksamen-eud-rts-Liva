@@ -7,9 +7,16 @@ export const listingsContext = createContext(null);
 function ListingsProvider({ children }) {
     const [results, setResults] = useState([]);
     const [allResults, setAllResults] = useState([]);
+    const [sorting, setSorting] = useState('new');
+
+    const states = {
+        results, setResults,
+        allResults, setAllResults,
+        sorting, setSorting
+    };
 
     return (
-        <listingsContext.Provider value={{ results, setResults, allResults, setAllResults }}>
+        <listingsContext.Provider value={{...states}}>
             {children}
         </listingsContext.Provider>
     );

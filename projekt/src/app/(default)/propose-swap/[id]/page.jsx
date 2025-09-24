@@ -26,7 +26,7 @@ async function ProposeSwapPage({ params }) {
             <h1 className="heading">Propose a Swap</h1>
             <SwapProvider>
                 <SwapList requestedListingId={id} />
-                <SwapForm user={user} />
+                <SwapForm user={user} requestedListingId={id} />
             </SwapProvider>
         </>
     );

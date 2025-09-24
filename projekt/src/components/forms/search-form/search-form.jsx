@@ -5,10 +5,12 @@ import { listingsContext } from "../../providers/listings-provider";
 import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
 import searchAction from "./search-action";
+import sorter from "@/utils/sorter";
+import SearchFilters from "./search-filters";
 import '@/scss/components/search.scss';
 
 function SearchForm({ listings }) {
-    const { setResults, setAllResults } = useContext(listingsContext);
+    const { setResults, setAllResults, sorting } = useContext(listingsContext);
     const [formState, formAction, isPending] = useActionState(searchAction);
     const router = useRouter();
 
@@ -39,6 +41,8 @@ function SearchForm({ listings }) {
             return;
         };
 
+        console.log(sorter(formState.results, sorting));
+
         setResults(formState.results.slice(0, 6));
         setAllResults(formState.results);
     }, [formState]);
@@ -59,20 +63,7 @@ function SearchForm({ listings }) {
                     <button type="submit" className="search-field__icon"><FiSearch /></button>
                 </div>
             </div>
-            <div className="search-filter">
-                <label>
-                    <input type="radio" name="filter" className="search-filter__checkbox" defaultChecked />
-                    <span>New</span>
-                </label>
-                <label>
-                    <input type="radio" name="filter" className="search-filter__checkbox" />
-                    <span>Price ascending</span>
-                </label>
-                <label>
-                    <input type="radio" name="filter" className="search-filter__checkbox" />
-                    <span>Price descending</span>
-                </label>
-            </div>
+            <SearchFilters />
         </form>
     );
 }

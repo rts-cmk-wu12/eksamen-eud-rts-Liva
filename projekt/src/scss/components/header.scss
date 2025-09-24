@@ -31,6 +31,10 @@
             }
         }
 
+        button.header__list-btn {
+            font-size: .95rem;
+        }
+
         &-btn {
             text-transform: capitalize;
             @include mixins.btnDefault();

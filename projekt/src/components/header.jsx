@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
+import LogoutForm from "./forms/logout-form/logout-form";
 import '@/scss/components/header.scss';
 
 async function Header() {
@@ -25,7 +26,7 @@ async function Header() {
                     {userId ? (
                         <>
                             <li><NavLink defaultClass='header__list-item' path='/profile'>profile</NavLink></li>
-                            <li><NavLink defaultClass='header__list-btn' path='/logout'>logout</NavLink></li>
+                            <li><LogoutForm /></li>
                         </>
                     ) : (
                         <>

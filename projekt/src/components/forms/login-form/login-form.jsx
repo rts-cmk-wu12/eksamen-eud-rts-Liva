@@ -21,7 +21,7 @@ function LoginForm() {
                                 autoComplete='email'
                                 defaultValue={formState?.data?.email}
                                 className="login-form__input" />
-                            <span className="login-form__error">{formState?.properties?.email?.error}</span>
+                            <span className="login-form__error">{formState?.properties?.email?.errors}</span>
                         </label>
                         <label>
                             <span className="login-form__label">password</span>
@@ -32,7 +32,7 @@ function LoginForm() {
                                 autoComplete='current-password'
                                 defaultValue={formState?.data?.password}
                                 className="login-form__input" />
-                            <span className="login-form__error">{formState?.properties?.password?.error}</span>
+                            <span className="login-form__error">{formState?.properties?.password?.errors}</span>
                         </label>
                         <span className="login-form__error">{formState?.errors}</span>
                         <button type="submit" className="login-form__btn">login</button>

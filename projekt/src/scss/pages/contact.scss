@@ -1,0 +1,63 @@
+@use '../root.scss';
+@use '../mixins.scss';
+
+.contact {
+    &__text {
+        text-align: center;
+        margin-inline: auto;
+        margin-top: 2rem;
+        max-width: 25rem;
+    }
+
+    &-form {
+        margin-top: 2rem;
+        margin-inline: auto;
+        display: flex;
+        justify-content: center;
+        max-width: 32rem;
+        gap: 1rem;
+
+        label {
+            width: 73%;
+        }
+
+        &__input {
+            background-color: root.$primary-white;
+            border: 1px solid root.$border-primary;
+            border-radius: .5rem;
+            padding: .6rem 1rem;
+            width: 100%;
+            font-size: 1rem;
+            color: root.$typeography-input;
+
+            &::placeholder {
+                font-size: 1rem;
+                color: root.$typeography-input;
+            }
+        }
+
+        &__error, &__success {
+            margin-top: .3rem;
+            color: root.$typeography-red;
+            text-align: center;
+            display: block;
+        }
+
+        &__success {
+            color: root.$typeography-green;
+        }
+
+        &__btn {
+            height: fit-content;
+            padding: .6rem 1.5rem !important;
+            font-size: 1rem;
+            @include mixins.btnDark();
+        }
+
+        &__loading {
+            margin-top: 2rem;
+            text-align: center;
+            display: block;
+        }
+    }
+}

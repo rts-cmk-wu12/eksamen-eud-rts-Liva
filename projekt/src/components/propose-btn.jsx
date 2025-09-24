@@ -12,7 +12,7 @@ function ProposeBtn({ listing, userId }) {
             disabled={listing.userId === userId}
             title={listing.userId === userId
                 ? 'Cannot trade with yourself'
-                : 'Ask owner to trade with you'}
+                : 'Ask owner to trade'}
             className="listing-details__btn"
         >Propose a swap</button>
     );
