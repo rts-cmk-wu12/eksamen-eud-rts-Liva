@@ -19,7 +19,7 @@ async function ListingDetails({ params }) {
     const listing = await myFetch(`api/v1/listings/${id}`);
 
     const cookieStore = await cookies();
-    const userId = Number(cookieStore.get('sh_user_id')?.value);
+    const userId = cookieStore.get('sh_user_id')?.value;
 
     const createdAt = new Date(listing.createdAt);
     const publishedDate = `${createdAt.getFullYear()}-${createdAt.getMonth() + 1}-${createdAt.getDate()}`;
@@ -40,7 +40,7 @@ async function ListingDetails({ params }) {
                     <h1 className="heading">{listing.title}</h1>
                     <p className="listing-details__text">{listing.description}</p>
                     <span>On SwapHub since: {publishedDate}</span>
-                    {userId && <ProposeBtn listing={listing} userId={userId} />}
+                    {userId && <ProposeBtn listing={listing} userId={Number(userId)} />}
                 </section>
             </div>
             <ListingOther ownerId={listing.userId} listingId={listing.id} />
