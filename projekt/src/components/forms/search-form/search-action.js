@@ -2,9 +2,10 @@
 
 import z from "zod";
 import myFetch from "@/utils/fetch";
+import sorter from "@/utils/sorter";
 
 export default async function searchAction(_, formData) {
-    const { query } = Object.fromEntries(formData);
+    const { query, filter } = Object.fromEntries(formData);
 
     const schema = z.object({
         query: z.string().min(1, { message: 'Searchfield is empty' }),
@@ -32,9 +33,11 @@ export default async function searchAction(_, formData) {
         query
     };
 
+    const sortedListings = sorter(filteredListings, filter);
+
     return {
         success: true,
-        results: filteredListings,
-        query
+        results: sortedListings,
+        query,
     };
 }

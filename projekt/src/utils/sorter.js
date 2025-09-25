@@ -1,25 +1,38 @@
-'use client';
-
-import { useEffect, useReducer } from "react";
-import reducer from "./reducer";
-
 function sorter(data, sorting) {
-    const [state, dispatch] = useReducer(reducer, {
-        ascending: true,
-        sortBy: 'createdAt',
-    });
+    let ascending = true;
+    let sortBy = 'createdAt';
 
-    dispatch({ type: sorting });
+    switch (sorting) {
+        case 'new':
+            ascending = true;
+            sortBy = 'createdAt';
+            break;
 
-    useEffect(() => {
-        dispatch({ type: sorting });
-    }, [sorting]);
+        case 'old':
+            ascending = false;
+            sortBy = 'createdAt';
+            break;
+
+        case 'asc':
+            ascending = true;
+            sortBy = 'title';
+            break;
+
+        case 'desc':
+            ascending = false;
+            sortBy = 'title';
+            break;
+
+        default:
+            ascending = true;
+            sortBy = 'createdAt';
+    };
 
     const sortedData = data.toSorted((a, b) => {
-        const conditionA = a[state?.sortBy].toUpperCase();
-        const conditionB = b[state?.sortBy].toUpperCase();
+        const conditionA = a[sortBy].toUpperCase();
+        const conditionB = b[sortBy].toUpperCase();
 
-        switch (state?.ascending) {
+        switch (ascending) {
             case true:
                 if (conditionA < conditionB) {
                     return -1;

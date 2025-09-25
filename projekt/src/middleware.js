@@ -12,5 +12,6 @@ export const config = {
     matcher: [
         '/propose-swap/:path*',
         '/profile/:path*',
+        '/my-listings/:path*',
     ]
 };
