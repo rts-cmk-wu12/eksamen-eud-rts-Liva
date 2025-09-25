@@ -21,10 +21,10 @@ async function Header() {
             <nav>
                 <ul className="header__list">
                     <li><NavLink defaultClass='header__list-item' path='/'>listings</NavLink></li>
-                    <li><NavLink defaultClass='header__list-item' path='/community'>community</NavLink></li>
                     <li><NavLink defaultClass='header__list-item' path='/contact'>contact</NavLink></li>
                     {userId ? (
                         <>
+                            <li><NavLink defaultClass='header__list-item' path='/my-listings'>my listings</NavLink></li>
                             <li><NavLink defaultClass='header__list-item' path='/profile'>profile</NavLink></li>
                             <li><LogoutForm /></li>
                         </>

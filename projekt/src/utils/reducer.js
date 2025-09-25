@@ -1,28 +1,16 @@
 function reducer(state, action) {
     switch (action.type) {
-        case 'new':
+        case 'showModal':
             return {
                 ...state,
-                ascending: true,
-                sortBy: 'createdAt'
+                showModal: true,
+                listingId: action.listingId,
             }
-        case 'old':
+        case 'hideModal':
             return {
                 ...state,
-                ascending: false,
-                sortBy: 'createdAt'
-            }
-        case 'asc':
-            return {
-                ...state,
-                ascending: true,
-                sortBy: 'title'
-            }
-        case 'desc':
-            return {
-                ...state,
-                ascending: false,
-                sortBy: 'title'
+                showModal: false,
+                listingId: null
             }
     }
 }

@@ -1,0 +1,106 @@
+@use '../root.scss';
+@use '../mixins.scss';
+
+.my-listings {
+    margin-top: 2rem;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    &__create-link {
+        width: fit-content;
+        @include mixins.btnDefault();
+    }
+
+    &-table {
+        text-align: left;
+        width: 100%;
+        max-width: 45rem;
+        border-collapse: collapse;
+
+        &__heading {
+            text-transform: capitalize;
+            font-weight: 600;
+            font-size: 1.12rem;
+        }
+
+        td {
+            padding-top: .5rem;
+        }
+
+        &__options {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: .5rem;
+
+            button {
+                background: none;
+                border: none;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    backdrop-filter: blur(2px);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-modal {
+        width: 20rem;
+        height: fit-content;
+        background-color: root.$primary-white;
+        box-shadow: 0 0 10px 2px root.$accent-grey;
+        border-radius: .3rem;
+        padding: 1rem;
+
+        &__heading {
+            text-align: center;
+            font-weight: 450;
+            position: relative;
+            display: block;
+            margin-bottom: 2rem;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                border-top: 1px solid root.$primary-black;
+            }
+        }
+
+        &__error {
+            margin-bottom: 1rem;
+            color: root.$typeography-red;
+            text-align: center;
+            display: block;
+        }
+
+        &__buttons {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        &__btn {
+            text-transform: capitalize;
+            @include mixins.btnDefault();
+
+            &:last-of-type {
+                @include mixins.btnDark();
+            }
+        }
+    }
+}
