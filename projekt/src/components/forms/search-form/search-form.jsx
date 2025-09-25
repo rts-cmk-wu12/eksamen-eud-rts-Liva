@@ -29,8 +29,9 @@ function SearchForm({ listings }) {
         if (!formState) return;
         if (!formState.success && formState.properties.query.errors) {
             router.replace('?page=1', { scroll: false });
-            setResults(listings);
-            setAllResults(listings);
+            const sortedListings = sorter(listings, sorting);
+            setResults(sortedListings);
+            setAllResults(sortedListings);
             return;
         };
 
@@ -40,8 +41,6 @@ function SearchForm({ listings }) {
             setAllResults([]);
             return;
         };
-
-        console.log(sorter(formState.results, sorting));
 
         setResults(formState.results.slice(0, 6));
         setAllResults(formState.results);
