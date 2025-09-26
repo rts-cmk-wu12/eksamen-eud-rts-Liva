@@ -6,7 +6,7 @@ export const metadata = {
     template: "%s | SwapHub",
     default: "SwapHub"
   },
-  description: "SwapHub er et lille fællesskab hvor du får muligheden til at bytte dine gamle ting med andre",
+  description: "SwapHub is a little community where you can trade your old stuff with others",
 };
 
 export default function RootLayout({ children }) {
