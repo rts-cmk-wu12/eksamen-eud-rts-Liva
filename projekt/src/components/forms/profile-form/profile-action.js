@@ -52,19 +52,17 @@ async function profileAction(_, formData) {
         body: JSON.stringify(updatedValues)
     });
 
-
     if (!response.ok) return {
         success: false,
         errors: ['Could not update profile. Try again later']
     };
 
-    revalidatePath('http://localhost:3000/profile');
+    revalidatePath('/profile');
 
     return {
         success: true,
         message: ['Successfully updated profile!']
     };
-
 }
 
 export default profileAction;

@@ -3,6 +3,7 @@
 import { useActionState, useContext } from "react";
 import { swapContext } from "@/components/providers/swap-provider";
 import swapAction from "./swap-action";
+import Loader from "@/components/loader";
 
 function SwapForm({ user, requestedListingId }) {
     const { itemId, setItemId } = useContext(swapContext);
@@ -19,7 +20,7 @@ function SwapForm({ user, requestedListingId }) {
     };
 
     return (
-        isPending ? <p className="swap-menu__loading">Loading...</p> : (
+        isPending ? <Loader styling='swap-menu__loading' /> : (
             <>
                 <span className="swap-menu__error">{formState?.errors}</span>
                 <form action={formAction} className="swap-menu">

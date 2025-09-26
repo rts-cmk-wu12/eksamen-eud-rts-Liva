@@ -3,32 +3,27 @@
 import { useActionState, useEffect, useReducer } from "react";
 import { FaPen, FaTrash } from "react-icons/fa6";
 import deleteListingAction from "./delete-action";
-import useFetch from "@/hooks/use-fetch";
 import reducer from "@/utils/reducer";
 import Link from "next/link";
 
-function ListingsTable({ userId, accessToken }) {
-    const [formState, formAction] = useActionState(deleteListingAction);
-    const { data, isLoading } = useFetch(`api/v1/users/${userId}`, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    });
+function ListingsTable({ data }) {
+    const [formState, formAction, isPending] = useActionState(deleteListingAction);
     const [state, dispatch] = useReducer(reducer, {
         showModal: false,
         listingId: null
     });
 
     useEffect(() => {
-        if (!formState) return;
+        if (!formState || isPending) return;
 
-        if (formState.success) dispatch({ type: 'hideModal' });
-    }, [formState]);
+        if (formState.success) {
+            dispatch({ type: 'hideModal' });
+        };
+    }, [formState, isPending]);
 
     return (
         <>
-            {isLoading && <p>Loading...</p>}
-            {!isLoading && !data.listings.length && <p>No listings found</p>}
+            {!data.listings.length && <p>No listings found</p>}
             {data?.listings.length > 0 && (
                 <table className="my-listings-table">
                     <thead>

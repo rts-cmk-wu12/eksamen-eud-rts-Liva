@@ -5,12 +5,12 @@ import Link from "next/link";
 
 // Følgende kode er udtaget fra et af mine personlige projekter
 function NavLink({ children, defaultClass, path }) {
-    const pathname = usePathname();
+    const pathname = usePathname().slice(1).split('/')[0];
 
     return (
         <Link
             href={path}
-            className={`${defaultClass} ${pathname === path ? 'active' : ''}`}
+            className={`${defaultClass} ${pathname === path.slice(1) ? 'active' : ''}`}
         >
             {children}
         </Link>

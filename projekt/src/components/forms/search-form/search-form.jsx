@@ -10,12 +10,13 @@ import SearchFilters from "./search-filters";
 import '@/scss/components/search.scss';
 
 function SearchForm({ listings }) {
-    const { setResults, setAllResults, sorting } = useContext(listingsContext);
+    const { setResults, setAllResults, sorting, setFiltering } = useContext(listingsContext);
     const [formState, formAction, isPending] = useActionState(searchAction);
     const router = useRouter();
 
     useEffect(() => {
-        setAllResults(listings);
+        const sortedListings = sorter(listings, sorting);
+        setAllResults(sortedListings);
     }, []);
 
     useEffect(() => {
@@ -27,22 +28,24 @@ function SearchForm({ listings }) {
 
     useEffect(() => {
         if (!formState) return;
+
+        router.replace('?page=1', { scroll: false });
+        setFiltering('');
+
         if (!formState.success && formState.properties.query.errors) {
-            router.replace('?page=1', { scroll: false });
             const sortedListings = sorter(listings, sorting);
             setResults(sortedListings);
             setAllResults(sortedListings);
             return;
         };
 
-        router.replace('?page=1', { scroll: false });
         if (typeof (formState.results) === 'string') {
             setResults(formState.results);
             setAllResults([]);
             return;
         };
 
-        setResults(formState.results.slice(0, 6));
+        setResults(formState.results);
         setAllResults(formState.results);
     }, [formState]);
 

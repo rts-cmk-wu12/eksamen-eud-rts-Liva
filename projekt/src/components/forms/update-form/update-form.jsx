@@ -1,14 +1,12 @@
 'use client';
 
 import { useActionState } from "react";
-import createAction from "./create-action";
-import useFetch from "@/hooks/use-fetch";
+import updateAction from "./update-action";
 import Loader from "@/components/loader";
 import '@/scss/components/create-form.scss';
 
-function CreateForm() {
-    const [formState, formAction, isPending] = useActionState(createAction);
-    const { data } = useFetch('api/v1/categories');
+function UpdateForm({ listing }) {
+    const [formState, formAction, isPending] = useActionState(updateAction);
 
     return (
         isPending ? <Loader styling='create-form__loading' /> : (
@@ -25,18 +23,9 @@ function CreateForm() {
                         name="title"
                         autoComplete="off"
                         className="create-form__input"
+                        defaultValue={listing.title}
                         placeholder="New title..." />
                     <span className="create-form__error">{formState?.properties?.title?.errors}</span>
-                </label>
-                <label>
-                    <span className="create-form__label">category</span>
-                    <select name="categoryId">
-                        <option value="">--Categories--</option>
-                        {data?.map(category => (
-                            <option value={category.id} key={category.id}>{category.name}</option>
-                        ))}
-                    </select>
-                    <span className="create-form__error">{formState?.properties?.categoryId?.errors}</span>
                 </label>
                 <label>
                     <span className="create-form__label">description</span>
@@ -45,15 +34,17 @@ function CreateForm() {
                         autoComplete="off"
                         rows={5}
                         className="create-form__input create-form__input--textarea"
+                        defaultValue={listing.description}
                         placeholder="New description..."
                     ></textarea>
                     <span className="create-form__error">{formState?.properties?.description?.errors}</span>
                 </label>
+                <input type="hidden" name="listingId" readOnly value={listing.id} />
                 <span className="create-form__error create-form__error--center">{formState?.errors}</span>
-                <button type="submit" className="create-form__btn">create</button>
+                <button type="submit" className="create-form__btn">update</button>
             </form>
         )
     );
 }
 
-export default CreateForm;
+export default UpdateForm;

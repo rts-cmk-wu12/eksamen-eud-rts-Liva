@@ -38,7 +38,7 @@ async function loginAction(_, formData) {
 
     if (!response.ok) return {
         success: false,
-        errors: ['Email or password is invalid'],
+        errors: ['Email or password is incorrect'],
         data: validated.data
     };
 

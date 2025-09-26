@@ -13,6 +13,8 @@ WU12 - Hovedforløb
 `npm run dev`
 
 ## Valgfri opgave:
+Jeg har lavet valgfri opgave A* (Jeg har valgt at udelade at filtrere efter brugere, da det ikke gav' mening.)      
+Jeg har lavet valgfri opgave B      
 Jeg har lavet valgfri opgave C
 
 ## Tech Stack
@@ -85,11 +87,22 @@ Jeg har lavet valgfri opgave C
 * Med React-icons kan jeg nemt og hurtigt importere et bestemt ikon ind.
 * Derfor vælger jeg React-icons i stedet for min gamle metode jeg brugte inden jeg kendte til det.
 
+### React-spinners
+* React-spinners er et loading-spinners-bibliotek, anvendt til React.
+* React-spinners tilbyder færdiglavet loading animationer der er nemme at tilpasse efter brug.
+* Jeg har valgt React-spinners da jeg nemt kan integrere loading animationer uden meget besvær, med brug af den.
+* Dog er versionen stadig i alpha, så andre muligheder kunne overvejes.
+
+**Hvorfor React-spinners?**
+* Som sagt, har versionen endnu ikke ramt beta som ikke er anbefaldet at bruge. Men selvom det, synes jeg at React-spinners er et godt bibliotek.
+* Der er stor variation af animationer, så man kan nemt finde noget der passer til sit design. De er nemme at tilpasse til specifikke behov og ændre på default styling.
+* Inden React-spinners ville jeg altid bare have loading'en til at være tekst. At lave min egen loading spinner, var irritirende og besværlig. Derfor kan jeg godt lide React-spinners på trods af at den kun er i alpha.
+
 ## Kode eksempel
 SearchForm komponent (components/search-form/search-form.jsx)
 ```jsx
 function SearchForm({ listings }) {
-    const { setResults, setAllResults, sorting } = useContext(listingsContext);
+    const { setResults, setAllResults, sorting, setFiltering } = useContext(listingsContext);
     const [formState, formAction, isPending] = useActionState(searchAction);
     const router = useRouter();
 
@@ -97,22 +110,24 @@ function SearchForm({ listings }) {
 
     useEffect(() => {
         if (!formState) return;
+
+        router.replace('?page=1', { scroll: false });
+        setFiltering('');
+
         if (!formState.success && formState.properties.query.errors) {
-            router.replace('?page=1', { scroll: false });
             const sortedListings = sorter(listings, sorting);
             setResults(sortedListings);
             setAllResults(sortedListings);
             return;
         };
 
-        router.replace('?page=1', { scroll: false });
         if (typeof (formState.results) === 'string') {
             setResults(formState.results);
             setAllResults([]);
             return;
         };
 
-        setResults(formState.results.slice(0, 6));
+        setResults(formState.results);
         setAllResults(formState.results);
     }, [formState]);
 
@@ -128,8 +143,8 @@ Jeg fetcher min data på min page (Med brug at en custom util der håndtere fejl
 I min useEffect's dependency array har jeg tilføjet et parameter (formState) til at køre koden igen hvis en ændring er sket til dens værdi. Som standard, ville min useEffect kører efter initial mount.
 
 Inde i min useEffect starter jeg med en guard clause der stopper resten med at køre hvis formState er falsy (null, undefined, 0, false).     
+Efterfølgende bruger jeg useRouter hook'en til at ændre mit search param og nulstiller filtering.   
 Derefter har jeg en conditional statement der lytter på 2 conditions som begge skal være opfyldt med logical and.   
-I denne if statement starter jeg med at bruge useRouter hook'en til at ændre mit search param.   
 Jeg bruger en util jeg har lavet til at sortere sidens indhold baseret på sorting's værdi.  
 Til sidst i denne statement, bruger jeg mine setters til at ændre indholdet der vises på siden. Jeg bruger en return da intet andet kode skal køres.   
 Jeg har endnu en if statement, der håndterer hvad der sker når ingen listings er blevet fundet. Denne slutter også af med en return.    
@@ -145,10 +160,13 @@ Til sidst i useEffect'en håndteres der hvad der skal ske, hvis ingen fejl er op
 * Dette har jeg gjort fordi i min egen mening, hedder det "sign up" og "login".
 * Jeg har dog ikke valgt at ændre "register" da den er fin nok.
 
-### Filtering
-* På forsiden er der 3 forskellige måder man kan filtrere (uden ekstra opgave).
+### Sortering
+* På forsiden er der 3 forskellige måder man kan sortere.
 * Jeg har ændret dette til 4 og lavet price asc og desc om til old, a-z og z-a.
 * Dette gjorde jeg da der overhovedet ikke er priser på bytte-tingene. Disse katogorier giver bedre mening synes jeg selv.
+
+### Filtering
+* Jeg har tilpasset stylingen af filtering menu'en så det passer til indholdet.
 
 ### Login side "Forgot password?"
 * Jeg har fjernet teksten der siger "Forgot password?" da sådan en funktion ikke er tilgængelig via api'et.

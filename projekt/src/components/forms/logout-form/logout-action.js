@@ -1,7 +1,8 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 async function logoutAction(_, formData) {
     const { pathname } = Object.fromEntries(formData);
@@ -10,8 +11,13 @@ async function logoutAction(_, formData) {
     cookieStore.delete('sh_access_token');
     cookieStore.delete('sh_user_id');
 
-    revalidatePath(`http://localhost:3000${pathname}`);
+    if (pathname.includes('/my-listings')
+        || pathname.includes('/profile')
+        || pathname.includes('/propose-swap')) {
+        redirect('/login');
+    };
 
+    revalidatePath(pathname);
     return;
 }
 

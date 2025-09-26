@@ -16,14 +16,12 @@ async function deleteListingAction(_, formData) {
         }
     });
 
-    console.log(response);
-
     if (!response.ok) return {
         success: false,
         errors: ['Failed to delete listing. Try again later']
     };
 
-    revalidatePath('http://localhost:3000/my-listings');
+    revalidatePath('/my-listings');
 
     return {
         success: true

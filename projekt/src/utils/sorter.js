@@ -1,15 +1,15 @@
 function sorter(data, sorting) {
-    let ascending = true;
+    let ascending = false;
     let sortBy = 'createdAt';
 
     switch (sorting) {
         case 'new':
-            ascending = true;
+            ascending = false;
             sortBy = 'createdAt';
             break;
 
         case 'old':
-            ascending = false;
+            ascending = true;
             sortBy = 'createdAt';
             break;
 
@@ -24,7 +24,7 @@ function sorter(data, sorting) {
             break;
 
         default:
-            ascending = true;
+            ascending = false;
             sortBy = 'createdAt';
     };
 

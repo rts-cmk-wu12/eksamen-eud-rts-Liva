@@ -83,9 +83,7 @@
 
         &__error {
             margin-bottom: 1rem;
-            color: root.$typeography-red;
-            text-align: center;
-            display: block;
+            @include mixins.errorDefault();
         }
 
         &__buttons {
