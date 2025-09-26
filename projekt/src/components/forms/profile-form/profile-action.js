@@ -58,7 +58,7 @@ async function profileAction(_, formData) {
         errors: ['Could not update profile. Try again later']
     };
 
-    revalidatePath('http://localhost:3000/profile');
+    revalidatePath('/profile');
 
     return {
         success: true,

@@ -2,20 +2,14 @@
 
 import { useActionState } from 'react';
 import profileAction from './profile-action';
-import useFetch from '@/hooks/use-fetch';
 import '@/scss/components/profile-form.scss';
 
-function ProfileForm({ userId, accessToken }) {
+function ProfileForm({ data }) {
     const [formState, formAction, isPending] = useActionState(profileAction);
-    const { data, isLoading } = useFetch(`api/v1/users/${userId}`, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
-    });
 
     return (
         <>
-            {isPending || isLoading ? <span className='profile-form__loading'>Loading...</span>
+            {isPending ? <span className='profile-form__loading'>Loading...</span>
                 : (
                     <form action={formAction} className="profile-form">
                         <div className='profile-form__box'>
