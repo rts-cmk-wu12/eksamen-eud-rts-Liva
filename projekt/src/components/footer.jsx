@@ -22,24 +22,24 @@ function Footer() {
             </nav>
             <ul className="footer-column">
                 <h2 className="footer-column__heading">about SwapHub</h2>
-                <li>How it works</li>
-                <li>Community guidelines</li>
-                <li>Our Mission</li>
-                <li>Contact us</li>
+                <li><Link href='#'>How it works</Link></li>
+                <li><Link href='#'>Community guidelines</Link></li>
+                <li><Link href='#'>Our Mission</Link></li>
+                <li><Link href='/contact'>Contact us</Link></li>
             </ul>
             <ul className="footer-column">
                 <h2 className="footer-column__heading">discover</h2>
-                <li>Browse categories</li>
-                <li>Popular Swaps</li>
-                <li>Successful stories</li>
-                <li>Upcoming events</li>
+                <li><Link href='#'>Browse categories</Link></li>
+                <li><Link href='#'>Popular Swaps</Link></li>
+                <li><Link href='#'>Successful stories</Link></li>
+                <li><Link href='#'>Upcoming events</Link></li>
             </ul>
             <ul className="footer-column">
                 <h2 className="footer-column__heading">support</h2>
-                <li>Help Center</li>
-                <li>FAQs</li>
-                <li>Safety tips</li>
-                <li>Report an issue</li>
+                <li><Link href='#'>Help Center</Link></li>
+                <li><Link href='#'>FAQs</Link></li>
+                <li><Link href='#'>Safety tips</Link></li>
+                <li><Link href='#'>Report an issue</Link></li>
             </ul>
         </footer>
     );
