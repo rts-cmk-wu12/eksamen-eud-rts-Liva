@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import createAction from "./create-action";
 import useFetch from "@/hooks/use-fetch";
+import Loader from "@/components/loader";
 import '@/scss/components/create-form.scss';
 
 function CreateForm() {
@@ -10,7 +11,7 @@ function CreateForm() {
     const { data } = useFetch('api/v1/categories');
 
     return (
-        isPending ? <p className="create-form__loading">Loading...</p> : (
+        isPending ? <Loader styling='create-form__loading' /> : (
             <form className="create-form" action={formAction}>
                 <label>
                     <span className="create-form__label">cover</span>

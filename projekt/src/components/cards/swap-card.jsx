@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import myFetch from "@/utils/fetch";
 import Link from "next/link";
 import Image from "next/image";
+import Loader from "../loader";
 
 function SwapCard({ id }) {
     const [listing, setListing] = useState(null);
@@ -34,7 +35,7 @@ function SwapCard({ id }) {
         </section>
     );
 
-    if (!listing) return <p>Loading...</p>
+    if (!listing) return <Loader />
 }
 
 export default SwapCard;

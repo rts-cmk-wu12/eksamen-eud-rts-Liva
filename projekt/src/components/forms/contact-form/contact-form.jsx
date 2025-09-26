@@ -2,12 +2,13 @@
 
 import { useActionState } from "react";
 import contactAction from "./contact-action";
+import Loader from "@/components/loader";
 
 function ContactForm() {
     const [formState, formAction, isPending] = useActionState(contactAction);
 
     return (
-        isPending ? <p className="contact-form__loading">Loading...</p> : (
+        isPending ? <Loader styling='contact-form__loading' /> : (
             <>
                 <form action={formAction} className="contact-form">
                     <label>

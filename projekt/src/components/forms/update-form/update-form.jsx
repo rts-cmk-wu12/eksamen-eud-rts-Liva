@@ -2,13 +2,14 @@
 
 import { useActionState } from "react";
 import updateAction from "./update-action";
+import Loader from "@/components/loader";
 import '@/scss/components/create-form.scss';
 
 function UpdateForm({ listing }) {
     const [formState, formAction, isPending] = useActionState(updateAction);
 
     return (
-        isPending ? <p className="create-form__loading">Loading...</p> : (
+        isPending ? <Loader styling='create-form__loading' /> : (
             <form className="create-form" action={formAction}>
                 <label>
                     <span className="create-form__label">cover</span>

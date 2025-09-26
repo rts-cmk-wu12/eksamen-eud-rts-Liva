@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { listingsContext } from "../providers/listings-provider";
 import ListingsCard from "../cards/listings-card";
+import Loader from "../loader";
 
 function ListingsList() {
     const { results } = useContext(listingsContext);
@@ -14,7 +15,7 @@ function ListingsList() {
             <ul className="listing">
                 {results.length
                     ? <ListingsCard listings={results} />
-                    : <p>Loading...</p>}
+                    : <Loader />}
             </ul>
         )
     );

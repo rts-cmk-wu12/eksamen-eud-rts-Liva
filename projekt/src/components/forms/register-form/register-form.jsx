@@ -2,13 +2,14 @@
 
 import { useActionState } from "react";
 import registerAction from "./register-action";
+import Loader from "@/components/loader";
 import '@/scss/components/profile-form.scss';
 
 function RegisterForm() {
     const [formState, formAction, isPending] = useActionState(registerAction);
 
     return (
-        isPending ? <span className='profile-form__loading'>Loading...</span>
+        isPending ? <Loader styling='profile-form__loading' />
             : (
                 <form action={formAction} className="profile-form">
                     <div className='profile-form__box'>
