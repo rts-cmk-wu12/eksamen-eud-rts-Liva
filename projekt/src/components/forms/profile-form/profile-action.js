@@ -52,7 +52,6 @@ async function profileAction(_, formData) {
         body: JSON.stringify(updatedValues)
     });
 
-
     if (!response.ok) return {
         success: false,
         errors: ['Could not update profile. Try again later']
@@ -64,7 +63,6 @@ async function profileAction(_, formData) {
         success: true,
         message: ['Successfully updated profile!']
     };
-
 }
 
 export default profileAction;

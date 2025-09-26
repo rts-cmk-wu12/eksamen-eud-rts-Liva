@@ -8,17 +8,15 @@ function ListingsList() {
     const { results } = useContext(listingsContext);
 
     return (
-        <>
-            {typeof (results) === 'string' ? (
-                <span className="listing-card__error">{results}</span>
-            ) : (
-                <ul className="listing">
-                    {results.length
-                        ? <ListingsCard listings={results} />
-                        : <p>Loading...</p>}
-                </ul>
-            )}
-        </>
+        typeof (results) === 'string' ? (
+            <span className="listing-card__error">{results}</span>
+        ) : (
+            <ul className="listing">
+                {results.length
+                    ? <ListingsCard listings={results} />
+                    : <p>Loading...</p>}
+            </ul>
+        )
     );
 }
 

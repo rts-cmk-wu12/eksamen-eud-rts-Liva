@@ -60,7 +60,7 @@ function RegisterForm() {
                         </label>
                     </div>
                     <span className="profile-form__error">{formState?.errors}</span>
-                    <button type="submit" className="profile-form__btn">save</button>
+                    <button type="submit" className="profile-form__btn">register</button>
                 </form>
             )
     );

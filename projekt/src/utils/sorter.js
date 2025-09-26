@@ -24,7 +24,7 @@ function sorter(data, sorting) {
             break;
 
         default:
-            ascending = true;
+            ascending = false;
             sortBy = 'createdAt';
     };
 

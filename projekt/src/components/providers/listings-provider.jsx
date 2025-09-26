@@ -16,7 +16,7 @@ function ListingsProvider({ children }) {
     };
 
     return (
-        <listingsContext.Provider value={{...states}}>
+        <listingsContext.Provider value={{ ...states }}>
             {children}
         </listingsContext.Provider>
     );

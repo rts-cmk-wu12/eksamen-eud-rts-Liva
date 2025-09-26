@@ -52,7 +52,7 @@ function Pagination({ listings }) {
                 onClick={() => router.replace(`?page=${activePage + 1}`, { scroll: false })}
             >next<FaArrowRight /></button>
         </nav>
-    )
+    );
 }
 
 export default Pagination;

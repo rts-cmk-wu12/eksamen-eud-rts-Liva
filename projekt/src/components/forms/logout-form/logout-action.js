@@ -1,8 +1,8 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 async function logoutAction(_, formData) {
     const { pathname } = Object.fromEntries(formData);
