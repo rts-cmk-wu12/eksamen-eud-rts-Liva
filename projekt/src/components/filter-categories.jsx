@@ -2,12 +2,14 @@
 
 import { useContext } from "react";
 import { listingsContext } from "./providers/listings-provider";
+import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
 import sorter from "@/utils/sorter";
 
 function FilterCategories({ listings }) {
     const { setResults, setAllResults, sorting, filtering, setFiltering } = useContext(listingsContext);
     const { data } = useFetch('api/v1/categories');
+    const router = useRouter();
 
     function handleFilterChange(e) {
         setFiltering(e.target.value);
@@ -18,6 +20,7 @@ function FilterCategories({ listings }) {
             return;
         };
 
+        router.replace('?page=1', { scroll: false });
         const filteredListings = listings.filter(result =>
             result.categoryId === Number(e.target.value));
         setResults(sorter(filteredListings, sorting));
