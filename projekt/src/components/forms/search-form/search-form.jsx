@@ -15,7 +15,8 @@ function SearchForm({ listings }) {
     const router = useRouter();
 
     useEffect(() => {
-        setAllResults(listings);
+        const sortedListings = sorter(listings, sorting);
+        setAllResults(sortedListings);
     }, []);
 
     useEffect(() => {
