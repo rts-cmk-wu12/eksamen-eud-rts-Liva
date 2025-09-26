@@ -13,6 +13,7 @@ WU12 - Hovedforløb
 `npm run dev`
 
 ## Valgfri opgave:
+Jeg har lavet valgfri opgave B      
 Jeg har lavet valgfri opgave C
 
 ## Tech Stack
