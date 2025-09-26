@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import z from "zod";
+import myFetch from "@/utils/fetch";
 
 async function updateAction(_, formData) {
     const { cover, title, description, listingId } = Object.fromEntries(formData);
@@ -32,17 +33,16 @@ async function updateAction(_, formData) {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('sh_access_token').value;
 
-    // const form = new FormData();
-    // form.append('file', validated.data.cover);
+    const form = new FormData();
+    form.append('file', validated.data.cover);
 
-    // const data = await fetch('http://localhost:4000/api/v1/assets', {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type": "multipart/form-data",
-    //         Authorization: `Bearer ${accessToken}`
-    //     },
-    //     body: form
-    // });
+    const data = await myFetch('api/v1/assets', {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        },
+        body: form
+    });
 
     const response = await fetch(`http://localhost:4000/api/v1/listings/${listingId}`, {
         method: 'PUT',
@@ -53,7 +53,7 @@ async function updateAction(_, formData) {
         body: JSON.stringify({
             title: validated.data.title,
             description: validated.data.description,
-            assetid: 1
+            assetid: data.id
         })
     });
 
