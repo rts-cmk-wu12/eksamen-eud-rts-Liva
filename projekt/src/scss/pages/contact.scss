@@ -27,7 +27,6 @@
 
         &__error,
         &__success {
-            margin-top: .3rem;
             @include mixins.errorDefault();
         }
 
