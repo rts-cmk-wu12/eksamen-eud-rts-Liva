@@ -15,7 +15,6 @@ async function logoutAction(_, formData) {
         || pathname.includes('/profile')
         || pathname.includes('/propose-swap')) {
         redirect('/login');
-        return;
     };
 
     revalidatePath(pathname);
