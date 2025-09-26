@@ -1,4 +1,5 @@
 @use '../root.scss';
+@use '../mixins.scss';
 
 .search {
     display: flex;
@@ -12,19 +13,13 @@
         text-align: center;
     }
 
-    &__error {
-        color: root.$typeography-red;
-    }
-
     &-field {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        background-color: root.$primary-white;
-        border: 1px solid root.$border-primary;
+        @include mixins.inputDefault();
         border-radius: 5rem;
-        padding: .5rem 1rem;
         margin-bottom: .3rem;
 
         label {

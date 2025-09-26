@@ -22,25 +22,13 @@
         }
 
         &__input {
-            background-color: root.$primary-white;
-            border: 1px solid root.$border-primary;
-            border-radius: .5rem;
-            padding: .6rem 1rem;
-            width: 100%;
-            font-size: 1rem;
-            color: root.$typeography-input;
-
-            &::placeholder {
-                font-size: 1rem;
-                color: root.$typeography-input;
-            }
+            @include mixins.inputDefault();
         }
 
-        &__error, &__success {
+        &__error,
+        &__success {
             margin-top: .3rem;
-            color: root.$typeography-red;
-            text-align: center;
-            display: block;
+            @include mixins.errorDefault();
         }
 
         &__success {
@@ -55,9 +43,8 @@
         }
 
         &__loading {
+            @include mixins.loadingDefault();
             margin-top: 2rem;
-            text-align: center;
-            display: block;
         }
     }
 }

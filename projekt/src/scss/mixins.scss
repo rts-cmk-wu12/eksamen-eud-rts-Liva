@@ -1,5 +1,45 @@
 @use './root.scss';
 
+@mixin formDefault() {
+    margin-top: 2rem;
+    margin-inline: auto;
+    border: 1px solid root.$border-primary;
+    padding-inline: 1rem;
+    padding-block: 1.5rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+@mixin labelDefault() {
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: .4rem;
+    margin-left: .2rem;
+}
+
+@mixin inputDefault() {
+    width: 100%;
+    background-color: root.$primary-white;
+    border: 1px solid root.$border-primary;
+    border-radius: .5rem;
+    padding: .6rem 1rem;
+    font-size: 1rem;
+    color: root.$typeography-input;
+
+    &::placeholder {
+        font-size: 1rem;
+        color: root.$typeography-input;
+    }
+}
+
+@mixin errorDefault() {
+    color: root.$typeography-red;
+    text-align: center;
+    display: block;
+}
+
 @mixin btnDefault() {
     padding: .3rem .8rem;
     border-radius: .5rem;
@@ -12,4 +52,10 @@
     background-color: root.$primary-black;
     border-color: root.$primary-black;
     color: root.$typeography-white;
+}
+
+@mixin loadingDefault() {
+    margin-top: 4rem;
+    text-align: center;
+    display: block;
 }

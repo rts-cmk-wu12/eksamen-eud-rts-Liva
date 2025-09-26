@@ -2,26 +2,15 @@
 @use '../mixins.scss';
 
 .create-form {
-    margin-top: 2rem;
-    margin-inline: auto;
     max-width: 35rem;
-    border: 1px solid root.$border-primary;
-    padding-inline: 1rem;
-    padding-block: 1.5rem;
-    border-radius: .5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.3rem;
+    @include mixins.formDefault();
 
     label {
         width: 100%;
     }
 
     &__label {
-        display: block;
-        text-transform: capitalize;
-        margin-bottom: .4rem;
-        margin-left: .2rem;
+        @include mixins.labelDefault();
     }
 
     &__file::file-selector-button {
@@ -29,18 +18,7 @@
     }
 
     &__input {
-        background-color: root.$primary-white;
-        border: 1px solid root.$border-primary;
-        border-radius: .5rem;
-        padding: .6rem 1rem;
-        font-size: 1rem;
-        width: 100%;
-        color: root.$typeography-input;
-
-        &::placeholder {
-            font-size: 1rem;
-            color: root.$typeography-input;
-        }
+        @include mixins.inputDefault();
 
         &--textarea {
             font-family: inherit;
@@ -52,8 +30,8 @@
     &__error {
         margin-top: .3rem;
         margin-left: .2rem;
-        color: root.$typeography-red;
-        display: block;
+        @include mixins.errorDefault();
+        text-align: left;
 
         &--center {
             text-align: center;
@@ -72,8 +50,6 @@
     }
 
     &__loading {
-        margin-top: 4rem;
-        text-align: center;
-        display: block;
+        @include mixins.loadingDefault();
     }
 }
