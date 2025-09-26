@@ -13,7 +13,7 @@ WU12 - Hovedforløb
 `npm run dev`
 
 ## Valgfri opgave:
-Jeg har lavet valgfri opgave A
+Jeg har lavet valgfri opgave A* (Jeg har valgt at udelade at filtrere efter brugere, da det ikke gav' mening.)      
 Jeg har lavet valgfri opgave B      
 Jeg har lavet valgfri opgave C
 
@@ -87,6 +87,17 @@ Jeg har lavet valgfri opgave C
 * Med React-icons kan jeg nemt og hurtigt importere et bestemt ikon ind.
 * Derfor vælger jeg React-icons i stedet for min gamle metode jeg brugte inden jeg kendte til det.
 
+### React-spinners
+* React-spinners er et loading-spinners-bibliotek, anvendt til React.
+* React-spinners tilbyder færdiglavet loading animationer der er nemme at tilpasse efter brug.
+* Jeg har valgt React-spinners da jeg nemt kan integrere loading animationer uden meget besvær, med brug af den.
+* Dog er versionen stadig i alpha, så andre muligheder kunne overvejes.
+
+**Hvorfor React-spinners?**
+* Som sagt, har versionen endnu ikke ramt beta som ikke er anbefaldet at bruge. Men selvom det, synes jeg at React-spinners er et godt bibliotek.
+* Der er stor variation af animationer, så man kan nemt finde noget der passer til sit design. De er nemme at tilpasse til specifikke behov og ændre på default styling.
+* Inden React-spinners ville jeg altid bare have loading'en til at være tekst. At lave min egen loading spinner, var irritirende og besværlig. Derfor kan jeg godt lide React-spinners på trods af at den kun er i alpha.
+
 ## Kode eksempel
 SearchForm komponent (components/search-form/search-form.jsx)
 ```jsx
@@ -149,10 +160,13 @@ Til sidst i useEffect'en håndteres der hvad der skal ske, hvis ingen fejl er op
 * Dette har jeg gjort fordi i min egen mening, hedder det "sign up" og "login".
 * Jeg har dog ikke valgt at ændre "register" da den er fin nok.
 
-### Filtering
-* På forsiden er der 3 forskellige måder man kan filtrere (uden ekstra opgave).
+### Sortering
+* På forsiden er der 3 forskellige måder man kan sortere.
 * Jeg har ændret dette til 4 og lavet price asc og desc om til old, a-z og z-a.
 * Dette gjorde jeg da der overhovedet ikke er priser på bytte-tingene. Disse katogorier giver bedre mening synes jeg selv.
+
+### Filtering
+* Jeg har tilpasset stylingen af filtering menu'en så det passer til indholdet.
 
 ### Login side "Forgot password?"
 * Jeg har fjernet teksten der siger "Forgot password?" da sådan en funktion ikke er tilgængelig via api'et.
