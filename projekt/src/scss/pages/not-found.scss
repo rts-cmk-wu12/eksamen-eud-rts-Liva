@@ -1,0 +1,33 @@
+@use '../root.scss';
+@use '../mixins.scss';
+
+.not-found {
+    align-self: center;
+    margin-top: 4rem;
+
+    &__heading {
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 600;
+    }
+
+    &__sub-heading {
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 1.62rem;
+        font-weight: 600;
+    }
+
+    &__text {
+        text-align: center;
+        margin-block: 1rem 2rem;
+        max-width: 30rem;
+    }
+
+    &__btn {
+        margin-inline: auto;
+        display: block;
+        width: fit-content;
+        @include mixins.btnDark();
+    }
+}
